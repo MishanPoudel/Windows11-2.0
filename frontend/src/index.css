@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 body{
-  background-image: url('https://initiate.alphacoders.com/images/115/cropped-1920-1080-1159855.jpg?3778');
+  background-image: url('https://images5.alphacoders.com/115/1159855.jpg');
   background-repeat: no-repeat;
+  overflow: hidden;
+  background-size: cover;
+}
+.context-menu {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Style for the content area */
+#content {
+  height: 100vh;
 }

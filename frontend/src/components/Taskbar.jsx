@@ -9,11 +9,11 @@ export default function Taskbar() {
     }, 1000);
 
     return () => clearInterval(intervalID);
-  }, []); // Empty dependency array ensures the effect runs only once
+  }, []); 
 
   const formatDate = (date) => {
     const options = { month: "2-digit", day: "2-digit", year: "numeric" };
-    return date.toLocaleDateString([], options);
+    return date.toLocaleDateString([], options).replace(/^0/, '');
   };
 
   const formatTime = (time) => {
@@ -22,36 +22,42 @@ export default function Taskbar() {
   };
   return (
     <>
-      <div class="fixed bottom-0 flex justify-between w-full h-[3.2rem] bg-neutral-800 border-t-[0.2px] border-neutral-700 select-none pointer-events-auto py-1">
-        <div>left</div>
-        <div className="flex justify-evenly items-center">
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
+      <div class="fixed bottom-0 flex justify-between w-full h-[3.2rem] bg-neutral-800 border-t-[0.2px] border-neutral-700 select-none pointer-events-auto py-[0.2rem] text-white">
+        <div className="w-[15%]"></div>
+        <div className="flex justify-center grow items-center">
+          <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11">
+            <img src="/images/apps/windows.png" alt="windows_logo" className="h-7.5"/>
+          </div>
+          <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11">
+            <img src="/images/apps/explorer.png" alt="windows_logo" className="h-7"/>
+          </div>
+          <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11">
+            <img src="/images/apps/edge.png" alt="windows_logo" className="h-8"/>
+          </div>
         </div>
         <div className="flex justify-center items-center">
           <span className="material-symbols-outlined h-full w-8 flex justify-center items-center rounded-lg rotate-180 hover:bg-neutral-700">
             expand_more
           </span>
           <div className="hover:bg-neutral-700 my-1 h-full flex justify-center items-center rounded-lg px-1">
-            <span className="material-symbols-outlined text-lg mx-1">wifi</span>
-            <span className="material-symbols-outlined text-xl mx-1">
+            <span className="material-symbols-outlined text-sm mx-[3.5px]">wifi</span>
+            <span className="material-symbols-outlined text-lg mx-[3.5px]">
               volume_up
             </span>
-            <span className="material-symbols-outlined text-xl mx-1 rotate-180">
+            <span className="material-symbols-outlined text-lg mx-[3.5px] rotate-180">
               battery_low
             </span>
           </div>
-          <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-lg px-1">
-           <div className="flex flex-col items-end">
+          <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-lg px-2">
+           <div className="flex flex-col items-end text-[0.78em]">
              <div>{formatTime(currentTime)}</div>
             <div>{formatDate(currentTime)}</div>
             </div>
-            <span class="material-symbols-outlined">notifications</span>
+            <span class="material-symbols-outlined text-xl ml-2">notifications</span>
           </div>
-          <div></div>
+          <div className="text-sm hover:bg-neutral-700 my-1 w-3 h-full rounded-lg">
+            <button></button>
+          </div>
         </div>
       </div>
     </>
