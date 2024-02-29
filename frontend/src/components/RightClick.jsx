@@ -7,7 +7,6 @@ function RightClick() {
   });
   const [showContextMenu, setShowContextMenu] = useState(false);
 
-  // Function to handle right-click event
   const handleContextMenu = (event) => {
     event.preventDefault();
     const x = event.clientX;
@@ -16,7 +15,6 @@ function RightClick() {
     setShowContextMenu(true);
   };
 
-  // Function to handle left-click event (to hide the context menu)
   const handleClick = () => {
     setShowContextMenu(false);
   };
