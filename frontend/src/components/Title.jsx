@@ -11,9 +11,15 @@ const Title = ({ constraintsRef, children }) => {
       dragTransition={{ velocity: 1 }}
     >
       <div className="h-10 flex justify-end items-center overflow-hidden">
-        <span class="material-symbols-outlined btn text-lg bg-transparent border-0">minimize</span>
-        <span class="material-symbols-outlined btn text-lg bg-transparent border-0">check_box_outline_blank</span>
-        <span class="material-symbols-outlined btn text-xl hover:bg-red-700 bg-transparent border-0">close</span>
+        <span class="material-symbols-outlined btn text-lg bg-transparent border-0">
+          minimize
+        </span>
+        <span class="material-symbols-outlined btn text-lg bg-transparent border-0">
+          check_box_outline_blank
+        </span>
+        <span class="material-symbols-outlined btn text-xl hover:bg-red-700 bg-transparent border-0">
+          close
+        </span>
       </div>
       {children}
     </motion.div>

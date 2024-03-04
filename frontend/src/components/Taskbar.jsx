@@ -9,11 +9,11 @@ export default function Taskbar() {
     }, 1000);
 
     return () => clearInterval(intervalID);
-  }, []); 
+  }, []);
 
   const formatDate = (date) => {
     const options = { month: "2-digit", day: "2-digit", year: "numeric" };
-    return date.toLocaleDateString([], options).replace(/^0/, '');
+    return date.toLocaleDateString([], options).replace(/^0/, "");
   };
 
   const formatTime = (time) => {
@@ -26,13 +26,25 @@ export default function Taskbar() {
         <div className="w-[15%]"></div>
         <div className="flex justify-center grow items-center">
           <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11">
-            <img src="/images/apps/windows.png" alt="windows_logo" className="h-7.5"/>
+            <img
+              src="/images/apps/windows.png"
+              alt="windows_logo"
+              className="h-7.5"
+            />
           </div>
           <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11">
-            <img src="/images/apps/explorer.png" alt="windows_logo" className="h-7"/>
+            <img
+              src="/images/apps/explorer.png"
+              alt="windows_logo"
+              className="h-7"
+            />
           </div>
           <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11">
-            <img src="/images/apps/edge.png" alt="windows_logo" className="h-8"/>
+            <img
+              src="/images/apps/edge.png"
+              alt="windows_logo"
+              className="h-8"
+            />
           </div>
         </div>
         <div className="flex justify-center items-center">
@@ -40,7 +52,9 @@ export default function Taskbar() {
             expand_more
           </span>
           <div className="hover:bg-neutral-700 my-1 h-full flex justify-center items-center rounded-lg px-1">
-            <span className="material-symbols-outlined text-sm mx-[3.5px]">wifi</span>
+            <span className="material-symbols-outlined text-sm mx-[3.5px]">
+              wifi
+            </span>
             <span className="material-symbols-outlined text-lg mx-[3.5px]">
               volume_up
             </span>
@@ -49,11 +63,13 @@ export default function Taskbar() {
             </span>
           </div>
           <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-lg px-2">
-           <div className="flex flex-col items-end text-[0.78em]">
-             <div>{formatTime(currentTime)}</div>
-            <div>{formatDate(currentTime)}</div>
+            <div className="flex flex-col items-end text-[0.78em]">
+              <div>{formatTime(currentTime)}</div>
+              <div>{formatDate(currentTime)}</div>
             </div>
-            <span class="material-symbols-outlined text-xl ml-2">notifications</span>
+            <span class="material-symbols-outlined text-xl ml-2">
+              notifications
+            </span>
           </div>
           <div className="text-sm hover:bg-neutral-700 my-1 w-3 h-full rounded-lg">
             <button></button>
