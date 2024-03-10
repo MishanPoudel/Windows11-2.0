@@ -1,11 +1,27 @@
-const express = require('express')
+const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
-const app = express()
+const app = express();
 
-const PORT = process.env.PORT || 5000;
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
+});
 
-app.listen(PORT, ()=>{console.log(`Server started on port: ${PORT}`)})
+app.use(express.json());
 
-app.get("/test",(req,res)=>{
-    res.send("Hello World")
-})
+// connect to MongoDB
+mongoose
+  .connect(process.env.MDB_CONNECT)
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log(`Connected to MongoDB & listening on port`, process.env.PORT);
+    });
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
+
+// set up routes
+app.use("/auth", require("./routers/userRouter.js"));
