@@ -1,16 +1,17 @@
-import Explorer from "./components/Explorer";
-import RightClick from "./components/RightClick";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Lockscreen from './Pages/lockscreen'
+import Main from './Pages/main'
 
 function App() {
   return (
-    <>
-      <div className="h-screen">
-        <RightClick />
-      <div className="absolute left-[28rem] top-40">
-        <Explorer />
-      </div>
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/lockscreen" element={<Lockscreen/>} />
+        <Route path="/main" element={<Main/>} />
+      </Routes>
+    </Router>
   );
 }
 
