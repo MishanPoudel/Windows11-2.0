@@ -48,7 +48,7 @@ export default function Taskbar() {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <span className="material-symbols-outlined h-full w-8 flex justify-center items-center rounded-lg rotate-180 hover:bg-neutral-700">
+          <span className="material-symbols-outlined h-full w-8 flex justify-center items-center rounded-lg rotate-180 hover:bg-neutral-700 font-light">
             expand_more
           </span>
           <div className="hover:bg-neutral-700 my-1 h-full flex justify-center items-center rounded-lg px-1">
@@ -62,7 +62,7 @@ export default function Taskbar() {
               battery_low
             </span>
           </div>
-          <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-lg px-2">
+          <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-lg px-2.5">
             <div className="flex flex-col items-end text-[0.78em]">
               <div>{formatTime(currentTime)}</div>
               <div>{formatDate(currentTime)}</div>
@@ -71,8 +71,10 @@ export default function Taskbar() {
               notifications
             </span>
           </div>
-          <div className="text-sm hover:bg-neutral-700 my-1 w-3 h-full rounded-lg">
-            <button></button>
+          <div className="group w-3 h-full flex justify-center items-center">
+            <button className="hidden group-hover:block text-neutral-400 text-md h-full w-full">
+              |
+            </button>
           </div>
         </div>
       </div>
