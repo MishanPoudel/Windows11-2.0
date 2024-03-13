@@ -25,12 +25,13 @@ router.post("/", async (req, res) => {
 
     // hash the passwords
     const salt = await bcrypt.genSalt();
-    const passwordHash = await bcrypt.hash(password, salt);
+    // const passwordHash = await bcrypt.hash(password, salt);
 
     // save a new user account to the db
     const newUser = new User({
       userName,
-      passwordHash,
+      password,
+      // passwordHash,
     });
 
     const savedUser = await newUser.save();
@@ -65,15 +66,17 @@ router.post("/login", async (req, res) => {
         .json({ errorMessage: "Please enter all required fields." });
 
     const existingUser = await User.findOne({ userName });
-    console.log("logged in");
     if (!existingUser)
       return res.status(401).json({ errorMessage: "Wrong username/password." });
 
-    const passwordCorrect = await bcrypt.compare(
-      password,
-      existingUser.passwordHash
-    );
-    if (!passwordCorrect)
+    // const passwordCorrect = await bcrypt.compare(
+    //   password,
+    //   existingUser.passwordHash
+    // );
+    // if (!passwordCorrect)
+    //   return res.status(401).json({ errorMessage: "Wrong username/password." });
+
+    if (password !== existingUser.password)
       return res.status(401).json({ errorMessage: "Wrong username/password." });
 
     const token = jwt.sign(
