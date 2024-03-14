@@ -1,10 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { AuthContext } from "../Context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Register({ toggleLogin }) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVerify, setPasswordVerify] = useState("");
+  const navigate = useNavigate();
+
+  const { getLoggedIn } = React.useContext(AuthContext);
 
   async function register(e) {
     e.preventDefault();
@@ -16,6 +21,8 @@ function Register({ toggleLogin }) {
       };
 
       await axios.post("http://localhost:5000/auth/", registerData);
+      await getLoggedIn();
+      navigate("/main", { replace: true });
     } catch (err) {
       console.error(err);
     }

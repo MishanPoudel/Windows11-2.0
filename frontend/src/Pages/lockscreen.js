@@ -12,7 +12,7 @@ function Lockscreen() {
   return (
     <>
       <div
-        className="absolute bg-black h-screen w-full blur-sm border-2"
+        className="absolute bg-black h-screen w-full blur-sm"
         style={{
           background:
             "url(https://img.wallpapersafari.com/desktop/1440/900/11/85/Ra8DH9.jpg)",
