@@ -22,7 +22,7 @@ export default function Taskbar() {
   };
   return (
     <>
-      <div class="fixed bottom-0 flex justify-between w-full h-[3.2rem] bg-neutral-800 border-t-[0.2px] border-neutral-700 select-none pointer-events-auto py-[0.2rem] text-white">
+      <div className="fixed bottom-0 flex justify-between w-full h-[3.2rem] bg-neutral-800 border-t-[0.2px] border-neutral-700 select-none pointer-events-auto py-[0.2rem] text-white">
         <div className="w-[15%]"></div>
         <div className="flex justify-center grow items-center">
           <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11">
@@ -67,12 +67,12 @@ export default function Taskbar() {
               <div>{formatTime(currentTime)}</div>
               <div>{formatDate(currentTime)}</div>
             </div>
-            <span class="material-symbols-outlined text-xl ml-2">
+            <span className="material-symbols-outlined text-xl ml-2">
               notifications
             </span>
           </div>
           <div className="group w-3 h-full flex justify-center items-center">
-            <button className="hidden group-hover:block text-neutral-400 text-md h-full w-full">
+            <button className="hidden group-hover:block text-neutral-400 text-md h-full w-full pointer-events-none">
               |
             </button>
           </div>
