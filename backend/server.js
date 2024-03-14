@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -11,11 +12,11 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-
+app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000"],
   })
 );
 
@@ -33,3 +34,4 @@ mongoose
 
 // set up routes
 app.use("/auth", require("./routers/userRouter.js"));
+app.use("/customers", require("./routers/customerRouter.js"));
