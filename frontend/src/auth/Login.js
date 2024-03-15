@@ -8,6 +8,7 @@ function Login({ toggleLogin }) {
   const [name] = useState("Mishan Poudel");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const { getLoggedIn } = React.useContext(AuthContext);
@@ -30,13 +31,39 @@ function Login({ toggleLogin }) {
       }
     } catch (err) {
       console.error(err);
+      setError("Failed to log in. Please check your username and password.");
+      setTimeout(() => {
+        setError("");
+      }, 2000);
     }
   }
 
   return (
     <>
+      {error && (
+        <div
+          role="alert"
+          className="absolute top-0 left-0 w-full bg-red-500 text-white text-center py-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="inline-block mr-2 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+          <span>{error}</span>
+        </div>
+      )}
       <form onSubmit={login}>
-        <div className="absolute left-0 top-72 h-screen w-full flex flex-col items-center z-10">
+        <div className="relative left-0 top-72 h-screen w-full flex flex-col items-center z-10">
           <div className="aspect-square w-32 h-36">
             <UserProfile name={name} />
           </div>
