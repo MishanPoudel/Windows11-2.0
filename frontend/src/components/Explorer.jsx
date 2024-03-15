@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import Draggable from "react-draggable";
 
-const Explorer = () => {
+const Explorer = ({isExplorerOpen}) => {
   const explorerRef = useRef(null);
 
   return (
-    <div className="h-full w-full hidden">
+    <div className={`h-full w-full  ${isExplorerOpen?"hidden":""}`}>
       <Draggable handle=".title-bar" nodeRef={explorerRef}>
         <div
           ref={explorerRef}
