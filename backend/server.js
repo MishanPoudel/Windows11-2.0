@@ -34,4 +34,3 @@ mongoose
 
 // set up routes
 app.use("/auth", require("./routers/userRouter.js"));
-app.use("/customers", require("./routers/customerRouter.js"));
