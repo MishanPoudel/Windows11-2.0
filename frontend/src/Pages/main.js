@@ -1,16 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"; // Import motion from framer-motion
+import { motion } from "framer-motion"; 
 import Explorer from "../components/Explorer";
 import RightClick from "../components/RightClick";
 import Taskbar from "../components/Taskbar";
 import { AuthContext } from "../Context/AuthContext";
 import LogOutBtn from "../auth/LogOutBtn";
+import StartMenu from "../components/StartMenu";
 
 function Main() {
   const { loggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Define isMenuOpen state
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isStartOpen, setisStartOpen] = useState(false);
+  const [isExplorerOpen, setisExplorerOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [funFact, setFunFact] = useState("");
 
@@ -23,7 +26,7 @@ function Main() {
     };
 
     const intervalID = setInterval(fetchFunFact, 10000);
-    fetchFunFact(); // Fetch a fun fact immediately when the component mounts
+    fetchFunFact(); 
 
     return () => clearInterval(intervalID);
   }, []);
@@ -53,19 +56,31 @@ function Main() {
   }, [loggedIn, navigate]);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Toggle isMenuOpen state
+    setIsMenuOpen(!isMenuOpen);
+  };
+  const toggleStart = () => {
+    setisStartOpen(!isStartOpen);
+  };
+  const toggleExplorer = () => {
+    setisExplorerOpen(!isExplorerOpen);
   };
 
   return (
     <>
       <div className="h-screen">
         <RightClick />
+        <div
+          className={`absolute top-0 flex justify-center items-center w-full h-full`}
+          onClick={isStartOpen ? toggleStart : undefined}
+        >
+          <StartMenu isStartOpen={isStartOpen} />
+        </div>
         <div className="absolute left-[28rem] top-40">
           <LogOutBtn />
-          <Explorer />
+          <Explorer toggleExplorer={toggleExplorer} isExplorerOpen={isExplorerOpen}/>
           <button onClick={toggleMenu}>Toggle Menu</button>
         </div>
-        <Taskbar />
+        <Taskbar toggleStart={toggleStart} toggleExplorer={toggleExplorer}/>
         <motion.nav
           transition={{
             type: "spring",
@@ -78,9 +93,9 @@ function Main() {
           animate={{
             y: isMenuOpen ? "0%" : "-100%",
           }}
-          className="fixed inset-0 bg-black h-full w-full"
+          className="fixed inset-0 bg-black h-full w-full z-50"
           onClick={(e) => {
-            e.stopPropagation(); // Prevent click events from propagating to parent elements
+            e.stopPropagation(); 
             toggleMenu();
           }}
           style={{
@@ -97,7 +112,7 @@ function Main() {
               <div className="font-semibold text-4xl mt-5">
                 {formatDate(currentTime)}
               </div>
-              <div className="font-semibold text-xl mt-36 w-64 flex justify-center flex-col items-center">
+              <div className="font-semibold text-xl mt-40 w-72 flex justify-center flex-col items-center">
                 Did you know? <div className="mt-3">{funFact}</div>
               </div>
             </div>
@@ -112,7 +127,7 @@ function Main() {
               </Link>
               <Link
                 to={
-                  "https://i.pinimg.com/564x/e6/b8/32/e6b83228c468135c85a4cc5ab320c1ac.jpg"
+                  "https://i.pinimg.com/564x/3a/08/4e/3a084e04a46b5f0cdf09fec54659dc07.jpg"
                 }
                 className="btn"
                 target="_blank"

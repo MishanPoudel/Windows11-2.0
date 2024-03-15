@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function Taskbar() {
+export default function Taskbar({ toggleStart, toggleExplorer }) {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -25,14 +25,17 @@ export default function Taskbar() {
       <div className="fixed bottom-0 flex justify-between w-full h-[3.2rem] bg-neutral-800 border-t-[0.2px] border-neutral-700 select-none pointer-events-auto py-[0.2rem] text-white">
         <div className="w-[15%]"></div>
         <div className="flex justify-center grow items-center">
-          <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11">
+          <div
+            className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11"
+            onClick={toggleStart}
+          >
             <img
               src="/images/apps/windows.png"
               alt="windows_logo"
               className="h-7.5"
             />
           </div>
-          <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11">
+          <div className="flex justify-center items-center font-semibold text-sm hover:bg-neutral-700 my-1 h-full rounded-md px-1 w-11" onClick={toggleExplorer}>
             <img
               src="/images/apps/explorer.png"
               alt="windows_logo"
