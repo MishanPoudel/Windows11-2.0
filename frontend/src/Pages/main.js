@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"; 
 import Explorer from "../components/Explorer";
-import RightClick from "../components/RightClick";
 import Taskbar from "../components/Taskbar";
 import { AuthContext } from "../Context/AuthContext";
 import LogOutBtn from "../auth/LogOutBtn";
@@ -68,7 +67,6 @@ function Main() {
   return (
     <>
       <div className="h-screen">
-        <RightClick />
         <div
           className={`absolute top-0 flex justify-center items-center w-full h-full`}
           onClick={isStartOpen ? toggleStart : undefined}

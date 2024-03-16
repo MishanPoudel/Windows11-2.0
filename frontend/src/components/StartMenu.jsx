@@ -5,7 +5,7 @@ function StartMenu({ isStartOpen }) {
     <>
       <section
         id="w11-start-section"
-        className={`bg-neutral-800 ${
+        className={`z-50 bg-neutral-800 ${
           isStartOpen ? "bottom-16" : "bottom-[-800px]"
         }`}
       >
