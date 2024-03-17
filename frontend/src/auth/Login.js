@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import UserProfile from "../components/UserProfile";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 
 function Login({ toggleLogin }) {
@@ -9,7 +8,6 @@ function Login({ toggleLogin }) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const { getLoggedIn } = React.useContext(AuthContext);
 
@@ -27,7 +25,7 @@ function Login({ toggleLogin }) {
       );
       getLoggedIn();
       if (response.status === 200) {
-        navigate("/main", { replace: true });
+        window.location.replace("/main", { replace: true });
       }
     } catch (err) {
       console.error(err);

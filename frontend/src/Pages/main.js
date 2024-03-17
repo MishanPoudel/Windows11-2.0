@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"; 
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Explorer from "../components/Explorer";
 import Taskbar from "../components/Taskbar";
 import { AuthContext } from "../Context/AuthContext";
@@ -9,8 +9,7 @@ import StartMenu from "../components/StartMenu";
 
 function Main() {
   const { loggedIn } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isStartOpen, setisStartOpen] = useState(false);
   const [isExplorerOpen, setisExplorerOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -25,7 +24,7 @@ function Main() {
     };
 
     const intervalID = setInterval(fetchFunFact, 10000);
-    fetchFunFact(); 
+    fetchFunFact();
 
     return () => clearInterval(intervalID);
   }, []);
@@ -50,9 +49,9 @@ function Main() {
 
   useEffect(() => {
     if (loggedIn === false) {
-      navigate("/lockscreen", { replace: true });
+      window.location.replace("/lockscreen", { replace: true });
     }
-  }, [loggedIn, navigate]);
+  }, [loggedIn]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -75,10 +74,13 @@ function Main() {
         </div>
         <div className="absolute left-[28rem] top-40">
           <LogOutBtn />
-          <Explorer toggleExplorer={toggleExplorer} isExplorerOpen={isExplorerOpen}/>
+          <Explorer
+            toggleExplorer={toggleExplorer}
+            isExplorerOpen={isExplorerOpen}
+          />
           <button onClick={toggleMenu}>Toggle Menu</button>
         </div>
-        <Taskbar toggleStart={toggleStart} toggleExplorer={toggleExplorer}/>
+        <Taskbar toggleStart={toggleStart} toggleExplorer={toggleExplorer} />
         <motion.nav
           transition={{
             type: "spring",
@@ -93,7 +95,7 @@ function Main() {
           }}
           className="fixed inset-0 bg-black h-full w-full z-50"
           onClick={(e) => {
-            e.stopPropagation(); 
+            e.stopPropagation();
             toggleMenu();
           }}
           style={{
