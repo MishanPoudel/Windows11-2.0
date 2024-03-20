@@ -294,3 +294,10 @@ label input {
   transform: translateY(calc(-100% - 2em));
   font-size: 0.6em;
 }
+
+.dropdown-top .dropdown-content {
+  bottom: 120%;
+  top: auto;
+  transform-origin: bottom;
+  left: -110px;
+}

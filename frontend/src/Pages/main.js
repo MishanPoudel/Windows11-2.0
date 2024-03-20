@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Explorer from "../components/Explorer";
 import Taskbar from "../components/Taskbar";
 import { AuthContext } from "../Context/AuthContext";
-import LogOutBtn from "../auth/LogOutBtn";
 import StartMenu from "../components/StartMenu";
 
 function Main() {
@@ -68,17 +67,14 @@ function Main() {
       <div className="h-screen">
         <div
           className={`absolute top-0 flex justify-center items-center w-full h-full`}
-          onClick={isStartOpen ? toggleStart : undefined}
         >
-          <StartMenu isStartOpen={isStartOpen} />
+          <StartMenu isStartOpen={isStartOpen} toggleMenu={toggleMenu} toggleStart={toggleStart}/>
         </div>
         <div className="absolute left-[28rem] top-40">
-          <LogOutBtn />
           <Explorer
             toggleExplorer={toggleExplorer}
             isExplorerOpen={isExplorerOpen}
           />
-          <button onClick={toggleMenu}>Toggle Menu</button>
         </div>
         <Taskbar toggleStart={toggleStart} toggleExplorer={toggleExplorer} />
         <motion.nav
