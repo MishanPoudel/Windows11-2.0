@@ -15,11 +15,7 @@ function LogOutBtn() {
     }
   }
 
-  return (
-    <button onClick={handleLogout} className="btn btn-ghost">
-      Log Out
-    </button>
-  );
+  return <button onClick={handleLogout}>Log Out</button>;
 }
 
 export default LogOutBtn;

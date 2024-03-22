@@ -21,7 +21,7 @@ function Power({ toggleMenu, toggleStart }) {
           <path d="M11 2h2v10h-2z"></path>
         </svg>
       </button>
-      <ul className="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-neutral-800">
+      <ul className="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-neutral-800 border-black border-2 border-opacity-10">
         <li>
           <button onClick={handleClick}>Sleep</button>
         </li>
