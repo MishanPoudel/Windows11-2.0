@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Explorer from "../components/Explorer";
 import Taskbar from "../components/Taskbar";
+import RightClick from "../components/RightClick";
 import { AuthContext } from "../Context/AuthContext";
 import StartMenu from "../components/StartMenu";
 
@@ -64,11 +65,69 @@ function Main() {
 
   return (
     <>
-      <div className="h-screen">
+      <div className="relative h-screen">
+        <div className="relative h-full w-full top-0 left-0 z-10 text-white">
+          <RightClick />
+
+          <div className="grid grid-cols-2 h-[80vh] grid-rows-8 gap-2 absolute top-2 left-2">
+            <div className="row-start-1">
+              <div className="w-[5em] h-full flex flex-col justify-center items-center rounded-md hover:bg-white hover:bg-opacity-20 p-2 select-none">
+                <img
+                  src="/images/apps/chrome.png"
+                  alt="edge"
+                  className="w-18 h-18"
+                />
+                <div className="text-balance text-center text-sm">
+                  Google Chrome
+                </div>
+              </div>
+            </div>
+            <div className="row-start-2">
+              <div className="w-[5em] h-full flex flex-col justify-center items-center rounded-md hover:bg-white hover:bg-opacity-20 p-2 select-none">
+                <img
+                  src="/images/apps/folder.png"
+                  alt="edge"
+                  className="w-18 h-18"
+                />
+                <div className="text-balance text-center text-sm">
+                  About Mishan
+                </div>
+              </div>
+            </div>
+            <div className="row-start-3">
+              <div className="w-[5em] h-full flex flex-col justify-center items-center rounded-md hover:bg-white hover:bg-opacity-20 p-2 select-none">
+                <img
+                  src="/images/apps/recyclebin.png"
+                  alt="edge"
+                  className="w-18 h-18"
+                />
+                <div className="text-balance text-center text-sm">
+                  Recycle Bin
+                </div>
+              </div>
+            </div>
+            <div className="row-start-4">
+              <div className="w-[5em] h-full flex flex-col justify-center items-center rounded-md hover:bg-white hover:bg-opacity-20 p-2 select-none">
+                <img
+                  src="/images/apps/edge.png"
+                  alt="edge"
+                  className="w-11 h-11"
+                />
+                <div className="text-balance text-center text-sm">
+                  Microsoft Edge
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           className={`absolute top-0 flex justify-center items-center w-full h-full`}
         >
-          <StartMenu isStartOpen={isStartOpen} toggleMenu={toggleMenu} toggleStart={toggleStart}/>
+          <StartMenu
+            isStartOpen={isStartOpen}
+            toggleMenu={toggleMenu}
+            toggleStart={toggleStart}
+          />
         </div>
         <div className="absolute left-[28rem] top-40">
           <Explorer
@@ -119,7 +178,7 @@ function Main() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span class="material-symbols-outlined">search</span>
+                <span className="material-symbols-outlined">search</span>
               </Link>
               <Link
                 to={
@@ -129,7 +188,7 @@ function Main() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span class="material-symbols-outlined">photo_camera</span>
+                <span className="material-symbols-outlined">photo_camera</span>
               </Link>
             </div>
           </div>
