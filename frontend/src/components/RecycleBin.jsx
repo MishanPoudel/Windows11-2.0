@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import Draggable from "react-draggable";
 
-const Explorer = ({isExplorerOpen, toggleExplorer}) => {
+const RecycleBin = () => {
   const explorerRef = useRef(null);
 
   return (
@@ -61,4 +61,4 @@ const Explorer = ({isExplorerOpen, toggleExplorer}) => {
   );
 };
 
-export default Explorer;
+export default RecycleBin;

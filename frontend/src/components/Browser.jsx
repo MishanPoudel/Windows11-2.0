@@ -1,15 +1,16 @@
 import React, { useRef } from "react";
 import Draggable from "react-draggable";
+import Chrome from "./Chrome";
 
-const Explorer = ({isExplorerOpen, toggleExplorer}) => {
-  const explorerRef = useRef(null);
-
+function Browser({isAppOpen, toggleBrowser}) {
+    const explorerRef = useRef(null);
   return (
-    <div className={`${isExplorerOpen?"":"hidden"} z-30`}>
+    <>
+      <div className={`${isAppOpen?"":"hidden"} z-30`}>
       <Draggable handle=".title-bar" nodeRef={explorerRef}>
         <div
           ref={explorerRef}
-          className="window bg-black h-[39rem] w-[70.5rem] rounded-xl overflow-hidden border-neutral-700 border-[1.5px]"
+          className="window bg-black h-[45rem] w-[70.5rem] rounded-xl overflow-hidden border-neutral-700 border-[1.5px]"
         >
           <div className="title-bar">
             <div className="text-white h-9 w-full flex justify-end select-none">
@@ -19,7 +20,7 @@ const Explorer = ({isExplorerOpen, toggleExplorer}) => {
               <div className="material-symbols-outlined hover:bg-neutral-800 mb-2 w-11 flex justify-center items-center text-sm">
                 check_box_outline_blank
               </div>
-              <div className="material-symbols-outlined hover:bg-red-700 mb-2 w-12 flex justify-center items-center text-xl" onClick={toggleExplorer}>
+              <div className="material-symbols-outlined hover:bg-red-700 mb-2 w-12 flex justify-center items-center text-xl" onClick={toggleBrowser}>
                 close
               </div>
             </div>
@@ -36,29 +37,18 @@ const Explorer = ({isExplorerOpen, toggleExplorer}) => {
                 add
               </div>
             </div>
-            <div className="bg-neutral-800 w-full h-12 border-neutral-700 border-b-[1.5px] mt-1">
+            <div className="bg-neutral-800 w-full h-10 border-neutral-700 border-b-[1.5px] mt-1">
               jhsdf
             </div>
-            <div className="bg-neutral-900 w-full h-[3.4rem] border-neutral-700 border-b-[1.5px]">
-              jhsdf
-            </div>
-            <div className="flex flex-row h-full bg-neutral-900">
-              <div className="w-40 h-[100vh] pt-2 border-neutral-700 border-r-[1.5px]">
-                this is a sidebar
-              </div>
-              <div className="border-0 ml-5 mt-2">this is content area</div>
-            </div>
-
-            <div className="absolute bottom-0 h-5 bg-neutral-900 w-full text-xs py-1">
-              <div className="flex items-center justify-center w-16 border-r-[1.5px] h-full">
-                5 items
-              </div>
+            <div className="h-[50em]">
+                <Chrome/>
             </div>
           </div>
         </div>
       </Draggable>
     </div>
+    </>
   );
-};
+}
 
-export default Explorer;
+export default Browser;
