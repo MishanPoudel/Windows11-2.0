@@ -6,6 +6,8 @@ import Taskbar from "../components/Taskbar";
 import RightClick from "../components/RightClick";
 import { AuthContext } from "../Context/AuthContext";
 import StartMenu from "../components/StartMenu";
+import Browser from "../components/Browser";
+import Calculator from "../components/Calculator";
 
 function Main() {
   const { loggedIn } = useContext(AuthContext);
@@ -14,6 +16,8 @@ function Main() {
   const [isExplorerOpen, setisExplorerOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [funFact, setFunFact] = useState("");
+  const [isBrowserOpen, setisBrowserOpen] = useState(false); // Separate state for browser
+  const [isCalculatorOpen, setisCalculatorOpen] = useState(false); // Separate state for calculator
 
   useEffect(() => {
     const fetchFunFact = () => {
@@ -62,16 +66,23 @@ function Main() {
   const toggleExplorer = () => {
     setisExplorerOpen(!isExplorerOpen);
   };
+  const toggleBrowser = () => {
+    setisBrowserOpen(!isBrowserOpen);
+    setisCalculatorOpen(false); // Close calculator when opening browser
+  };
+  const toggleCalculator = () => {
+    setisCalculatorOpen(!isCalculatorOpen);
+    setisBrowserOpen(false); // Close browser when opening calculator
+  };
 
   return (
     <>
       <div className="relative h-screen">
         <div className="relative h-full w-full top-0 left-0 z-10 text-white">
           <RightClick />
-
           <div className="grid grid-cols-2 h-[80vh] grid-rows-8 gap-2 absolute top-2 left-2">
             <div className="row-start-1">
-              <div className="w-[5em] h-full flex flex-col justify-center items-center rounded-md hover:bg-white hover:bg-opacity-20 p-2 select-none">
+              <div className="w-[5em] h-full flex flex-col justify-center items-center rounded-md hover:bg-white hover:bg-opacity-20 p-2 select-none" onDoubleClick={toggleBrowser}>
                 <img
                   src="/images/apps/chrome.png"
                   alt="edge"
@@ -99,9 +110,9 @@ function Main() {
                 <img
                   src="/images/apps/recyclebin.png"
                   alt="edge"
-                  className="w-18 h-18"
+                  className="w-16 h-16"
                 />
-                <div className="text-balance text-center text-sm">
+                <div className="text-balance text-center text-xs">
                   Recycle Bin
                 </div>
               </div>
@@ -118,6 +129,18 @@ function Main() {
                 </div>
               </div>
             </div>
+            <div className="row-start-5">
+              <div className="w-[5em] h-full flex flex-col justify-center items-center rounded-md hover:bg-white hover:bg-opacity-20 p-2 select-none" onDoubleClick={toggleCalculator}>
+                <img
+                  src="/images/apps/calculator.png"
+                  alt="edge"
+                  className="w-11 h-11"
+                />
+                <div className="text-balance text-center text-sm pt-2">
+                  Calculator
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div
@@ -128,11 +151,14 @@ function Main() {
             toggleMenu={toggleMenu}
             toggleStart={toggleStart}
           />
-        </div>
-        <div className="absolute left-[28rem] top-40">
+          <Browser isAppOpen={isBrowserOpen} toggleBrowser={toggleBrowser} />
           <Explorer
             toggleExplorer={toggleExplorer}
             isExplorerOpen={isExplorerOpen}
+          />
+          <Calculator
+            isAppOpen={isCalculatorOpen}
+            toggleCalculator={toggleCalculator}
           />
         </div>
         <Taskbar toggleStart={toggleStart} toggleExplorer={toggleExplorer} />
