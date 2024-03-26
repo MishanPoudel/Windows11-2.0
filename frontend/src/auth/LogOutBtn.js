@@ -7,7 +7,7 @@ function LogOutBtn() {
 
   async function handleLogout() {
     try {
-      await axios.get("http://localhost:5000/auth/logout");
+      await axios.get("/auth/logout");
       await getLoggedIn();
       window.location.replace("/lockscreen", { replace: true });
     } catch (error) {

@@ -19,10 +19,7 @@ function Login({ toggleLogin }) {
         password,
       };
 
-      const response = await axios.post(
-        "http://localhost:5000/auth/login",
-        loginData
-      );
+      const response = await axios.post("/auth/login", loginData);
       getLoggedIn();
       if (response.status === 200) {
         window.location.replace("/main", { replace: true });

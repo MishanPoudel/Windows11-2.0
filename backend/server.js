@@ -16,16 +16,18 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000"],
+    origin: ["https://windows11-one-lyart.vercel.app"],
   })
 );
 
 // connect to MongoDB
+const PORT = process.env.PORT || 5000; // Use process.env.PORT if available, otherwise use port 5000
+
 mongoose
   .connect(process.env.MDB_CONNECT)
   .then(() => {
-    app.listen(process.env.PORT, () => {
-      console.log(`Connected to MongoDB & listening on port`, process.env.PORT);
+    app.listen(PORT, () => {
+      console.log(`Connected to MongoDB & listening on port`, PORT);
     });
   })
   .catch((error) => {

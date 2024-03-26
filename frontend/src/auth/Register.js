@@ -18,7 +18,7 @@ function Register({ toggleLogin }) {
         passwordVerify,
       };
 
-      await axios.post("http://localhost:5000/auth/", registerData);
+      await axios.post("/auth/", registerData);
       await getLoggedIn();
       window.location.replace("/main", { replace: true });
     } catch (err) {
