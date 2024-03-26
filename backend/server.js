@@ -21,7 +21,7 @@ app.use(
 );
 
 // connect to MongoDB
-const PORT = process.env.PORT || 5000; // Use process.env.PORT if available, otherwise use port 5000
+  const PORT = process.env.PORT; // Use process.env.PORT if available, otherwise use port 5000
 
 mongoose
   .connect(process.env.MDB_CONNECT)
